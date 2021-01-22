@@ -74,7 +74,7 @@ export default function RegisterDepartments() {
             className={classes.bgButton}
             onClick={insertUsers}
           >
-            Crear Usuario
+            Crear Departamento
           </Button>
         </Grid>
       </Grid>

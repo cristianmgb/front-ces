@@ -156,7 +156,7 @@ export default function RegisterUsers() {
             className={classes.bgButton}
             onClick={saveEmployes}
           >
-            Crear Departamento
+            Crear Empleado
           </Button>
         </Grid>
       </Grid>
