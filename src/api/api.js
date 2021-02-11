@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.1.106:5000/api/";
+const BASE_URL = "http://52.15.236.233:5000/api/";
 // const BASE_URL = "http://127.0.0.1:5000/";
 export const SALIDA_ENTRADA = "entrada-salida";
 export const EMPLOYES = "employes";
