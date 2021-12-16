@@ -5,8 +5,12 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Delete from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import Swal from "sweetalert2";
 import Title from "./Title";
-import API, { EMPLOYES } from "../../../api/api";
+import API, { EMPLOYES, DELETE_EMPLOYES } from "../../../api/api";
+import { fetchImage } from "../../../utils/ultil";
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -18,13 +22,29 @@ export default function ListEmployes() {
   const classes = useStyles();
   const [employes, setEmployes] = useState([]);
 
-  useEffect( () => {
+  useEffect(() => {
     getEmployes();
-  },[]);
+  }, []);
 
   const getEmployes = async () => {
     const list = await API.get(EMPLOYES);
     setEmployes(list.data);
+  };
+
+  const deleteEmploye = async (id) => {
+    const res = await API.post({ id }, DELETE_EMPLOYES);
+    if (res.status === "OK") {
+      getEmployes();
+      Swal.fire({
+        icon: "success",
+        text: res.message,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: res.message,
+      });
+    }
   };
 
   return (
@@ -39,6 +59,7 @@ export default function ListEmployes() {
             <TableCell>Identificacion</TableCell>
             <TableCell>Departamento</TableCell>
             <TableCell>Estado</TableCell>
+            <TableCell>Eliminar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,7 +70,22 @@ export default function ListEmployes() {
               <TableCell>{row.apellidos}</TableCell>
               <TableCell>{row.identificacion}</TableCell>
               <TableCell>{row.departamento}</TableCell>
-              <TableCell>{row.estado === 1 && 'Activo'}</TableCell>
+              <TableCell>
+                {row.foto ? (
+                  <img
+                    src={fetchImage(row.foto)}
+                    alt={row.nombres}
+                    style={{ width: 50 }}
+                  />
+                ) : (
+                  <p>No foto</p>
+                )}
+              </TableCell>
+              <TableCell>
+                <IconButton onClick={() => deleteEmploye(row.id)}>
+                  <Delete />
+                </IconButton>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -56,7 +56,7 @@ export default function EnTurno({ handleExtras }) {
               <TableCell>{row.apellidos}</TableCell>
               <TableCell>{row.identificacion}</TableCell>
               <TableCell>{row.entrada}</TableCell>
-              <TableCell>{row.autoriza_extras === 0 ? 'NO' : 'SÍ'}</TableCell>
+              <TableCell>{row.autoriza_extras === 0 ? "NO" : "SÍ"}</TableCell>
               <TableCell>{row.departamento}</TableCell>
               <TableCell>
                 <IconButton

@@ -22,10 +22,23 @@ function fecha() {
   return fecha;
 }
 
+function fetchImage(image) {
+  return new Buffer.from(image).toString("ascii");
+}
+
+async function blobImage(image) {
+  const url = new Buffer.from(image).toString("ascii");
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return blob;
+}
+
 module.exports = {
   saveSesion,
   getSesion,
   deleteSesion,
   formatDate,
-  fecha
+  fecha,
+  fetchImage,
+  blobImage,
 };

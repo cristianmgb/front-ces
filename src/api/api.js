@@ -1,7 +1,9 @@
-const BASE_URL = "http://52.15.236.233:5000/api/";
-// const BASE_URL = "http://127.0.0.1:5000/";
+// const BASE_URL = "http://52.15.236.233:5000/api/";
+const BASE_URL = "http://localhost:5000/api/";
 export const SALIDA_ENTRADA = "entrada-salida";
 export const EMPLOYES = "employes";
+export const VALIDATE_EMPLOYES = "validate-employes";
+export const DELETE_EMPLOYES = "delte-employes";
 export const DEPARTMENTS = "departments";
 export const LOGIN = "login";
 export const USERS = "users";
@@ -35,7 +37,9 @@ class API {
       }),
     };
     try {
-      const url = params ? `${BASE_URL}${enpoint}/${params}` : BASE_URL + enpoint;
+      const url = params
+        ? `${BASE_URL}${enpoint}/${params}`
+        : BASE_URL + enpoint;
       const result = await fetch(url, config);
       const res = await result.json();
       return res;
