@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -65,11 +65,11 @@ export default function EntradaSalida({ history }) {
   // let countNoMatch = 0;
   const classes = useStyles();
   const [cedula, setCedula] = useState("");
-  const [nombres, setNombres] = useState("");
-  const [idEmpleado, setIdEmpleado] = useState("");
-  const [tipo, setTipo] = useState("");
+  // const [nombres, setNombres] = useState("");
+  // const [idEmpleado, setIdEmpleado] = useState("");
+  // const [tipo, setTipo] = useState("");
   const [time, setTime] = useState("");
-  const [saludo, setSaludo] = useState("");
+  // const [saludo, setSaludo] = useState("");
   // const [open, setOpen] = useState(false);
   // const [img, setImg] = useState(null);
 
@@ -114,10 +114,10 @@ export default function EntradaSalida({ history }) {
       if (res.status === "OK") {
         // const blobImg = fetchImage(res.data.foto);
         // setImg(blobImg);
-        setNombres(res.data.nombres);
-        setIdEmpleado(res.data.id_empleado);
-        setTipo("entrada");
-        setSaludo("Bienvenido");
+        // setNombres(res.data.nombres);
+        // setIdEmpleado(res.data.id_empleado);
+        // setTipo("entrada");
+        // setSaludo("Bienvenido");
         // handleOpen();
 
         registerInOut({
@@ -147,9 +147,9 @@ export default function EntradaSalida({ history }) {
       if (res.status === "OK") {
         // const blobImg = fetchImage(res.data.foto);
         // setImg(blobImg);
-        setNombres(res.data.nombres);
-        setIdEmpleado(res.data.id_empleado);
-        setTipo("salida");
+        // setNombres(res.data.nombres);
+        // setIdEmpleado(res.data.id_empleado);
+        // setTipo("salida");
         // handleOpen();
         registerInOut({
           id_empleado: res.data.id_empleado,
@@ -171,7 +171,6 @@ export default function EntradaSalida({ history }) {
   };
 
   const registerInOut = async (data) => {
-    console.log(data);
     const res = await API.post(data, SALIDA_ENTRADA);
     if (res.status === "OK") {
       Swal.fire({
