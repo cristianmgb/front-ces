@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -21,14 +21,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AprobarExtras({ data, cancelarAprobacion }) {
   const classes = useStyles();
-  const [employes, setEmployes] = useState({
-    id_empleado: data.id_empleado,
-    nombres: data?.nombres,
-    apellidos: data?.apellidos,
-    identificacion: data?.identificacion,
-    departamento: data?.departamento,
-    observacion: "",
-  });
+  const [employes, setEmployes] = useState({});
+
+  useEffect(() => {
+    setEmployes({
+      id_empleado: data.id_empleado,
+      nombres: data.nombres,
+      apellidos: data.apellidos,
+      identificacion: data.identificacion,
+      departamento: data.departamento,
+      observacion: "",
+    });
+  }, [data]);
 
   const changeText = (e) => {
     setEmployes({
@@ -55,7 +59,7 @@ export default function AprobarExtras({ data, cancelarAprobacion }) {
         icon: "success",
         text: res.message,
       });
-      cancelarAprobacion()
+      cancelarAprobacion();
     } else {
       Swal.fire({
         icon: "error",

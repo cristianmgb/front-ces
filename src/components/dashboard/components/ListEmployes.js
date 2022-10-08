@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Swal from "sweetalert2";
 import Title from "./Title";
 import API, { EMPLOYES, DELETE_EMPLOYES } from "../../../api/api";
-import { fetchImage } from "../../../utils/ultil";
+// import { fetchImage } from "../../../utils/ultil";
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -71,15 +71,7 @@ export default function ListEmployes() {
               <TableCell>{row.identificacion}</TableCell>
               <TableCell>{row.departamento}</TableCell>
               <TableCell>
-                {row.foto ? (
-                  <img
-                    src={fetchImage(row.foto)}
-                    alt={row.nombres}
-                    style={{ width: 50 }}
-                  />
-                ) : (
-                  <p>No foto</p>
-                )}
+                {row.estado === 1 ? <p>Activo</p> : <p>Inactivo</p>}
               </TableCell>
               <TableCell>
                 <IconButton onClick={() => deleteEmploye(row.id)}>
