@@ -18,7 +18,7 @@ import { withRouter } from "react-router-dom";
 import { mainListItems, SecondaryListItems } from "./ListMenu";
 import Copyright from "./Copyright";
 import { deleteSesion, getSesion } from "../../../utils/ultil";
-import Logo from "../../../images/logo_blanco.png"
+import Logo from "../../../images/bacata.jpeg";
 
 const drawerWidth = 240;
 
@@ -108,8 +108,15 @@ function Layout({ children, history }) {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const data = getSesion();
-    setUser(data[0]);
+    if (getSesion() != null) {
+      const data = getSesion();
+      setUser(data[0]);
+    } else {
+      window.location.href = "/";
+    }
+    return () => {
+      setUser({});
+    };
   }, []);
 
   const handleDrawerOpen = () => {
@@ -144,7 +151,7 @@ function Layout({ children, history }) {
           >
             <MenuIcon />
           </IconButton>
-          <img src={Logo} alt="" width={60} style={{marginRight: 15}}/>
+          <img src={Logo} alt="" width={150} style={{ marginRight: 15 }} />
           <Typography
             component="h1"
             variant="h6"

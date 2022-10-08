@@ -33,7 +33,7 @@ async function blobImage(image) {
   return blob;
 }
 
-module.exports = {
+export {
   saveSesion,
   getSesion,
   deleteSesion,

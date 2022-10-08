@@ -8,8 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Swal from "sweetalert2";
 import { withRouter } from "react-router-dom";
-import md5 from 'md5';
-import logo from "../images/millionaires.png";
+import md5 from "md5";
+import logo from "../images/bacata.jpeg";
 import Copyright from "./dashboard/components/Copyright";
 import api, { LOGIN } from "../api/api";
 import { saveSesion, getSesion } from "../utils/ultil";
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: "#d2ac57",
-    color: 'white'
+    color: "white",
   },
   title: {
     marginBottom: 30,
@@ -89,7 +89,7 @@ function SignIn({ history }) {
         <img
           src={logo}
           alt="logo casino"
-          style={{ width: 100, marginBottom: 15 }}
+          style={{ width: 280, marginBottom: 15 }}
         />
         <Typography component="h1" variant="h5" className={classes.title}>
           Control de Entra y Salida
