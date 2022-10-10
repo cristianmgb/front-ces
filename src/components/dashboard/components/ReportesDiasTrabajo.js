@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginLeft: 5,
     marginRight: 10,
-    marginTop: 30
+    marginTop: 30,
   },
   identificacion: {
-    marginTop: 16
+    marginTop: 16,
   },
   bgCaledar: {
     backgroundColor: "#d2ac57",
-  }
+  },
 }));
 
 export default function RegisterDepartments() {
@@ -159,7 +159,9 @@ export default function RegisterDepartments() {
             <Grid container spacing={5}>
               <Grid item xs={12}>
                 <ExcelFile
-                  filename={`reporte_del_${formatDate(selectedDateInit)}_al_${formatDate(selectedDateEnd)}`}
+                  filename={`reporte_del_${formatDate(
+                    selectedDateInit
+                  )}_al_${formatDate(selectedDateEnd)}`}
                   element={
                     <Button variant="contained" className={classes.bgButton}>
                       Descargar Reporte
@@ -180,6 +182,7 @@ export default function RegisterDepartments() {
                       value="horas_ordinarias"
                     />
                     <ExcelColumn label="Horas Extras" value="horas_extras" />
+                    <ExcelColumn label="Departamento" value="departamento" />
                     <ExcelColumn label="Observaciones" value="observaciones" />
                   </ExcelSheet>
                 </ExcelFile>
@@ -196,6 +199,7 @@ export default function RegisterDepartments() {
                   <TableCell>F. Salida</TableCell>
                   <TableCell>Horas Trabajadas</TableCell>
                   <TableCell>Horas Extras</TableCell>
+                  <TableCell>Departamento</TableCell>
                   <TableCell>Observaciones</TableCell>
                 </TableRow>
               </TableHead>
@@ -210,6 +214,7 @@ export default function RegisterDepartments() {
                     <TableCell>{row.salida}</TableCell>
                     <TableCell>{row.horas_ordinarias}</TableCell>
                     <TableCell>{row.horas_extras}</TableCell>
+                    <TableCell>{row.departamento}</TableCell>
                     <TableCell>{row.observaciones}</TableCell>
                   </TableRow>
                 ))}
